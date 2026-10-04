@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janta Interior World & Janta Engineer World - jantainteriors.info</title>
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --dark-bg: #090d16;
+            --card-bg: #111827;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --whatsapp-green: #25d366;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #111827, #030712);
+            border-bottom: 3px solid var(--primary-gold);
+            padding: 25px 15px;
+            text-align: center;
+        }
+        .profile-title h1 {
+            color: var(--primary-gold);
+            margin: 5px 0;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .profile-title p {
+            color: var(--text-gray);
+            margin: 5px 0;
+            font-size: 15px;
+        }
+        .contact-bar {
+            background: #1f2937;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #374151;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .contact-bar a {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-call { color: var(--primary-gold); }
+        .btn-wa { color: var(--whatsapp-green); }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sidebar-list {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-gold);
+            border-radius: 8px;
+            padding: 15px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        .sidebar-list h3 {
+            color: var(--primary-gold);
+            margin-top: 0;
+            border-bottom: 1px solid #374151;
+            padding-bottom: 10px;
+            font-size: 18px;
+        }
+        .sidebar-list ul {
+            padding-left: 15px;
+            margin: 0;
+            list-style-type: none;
+        }
+        .sidebar-list li {
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        .sidebar-list a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .sidebar-list a:hover {
+            color: var(--primary-gold);
+        }
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .features-banner {
+            background: var(--card-bg);
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            text-align: center;
+        }
+        .feature-item { color: var(--primary-gold); font-size: 14px; font-weight: bold; }
+        .feature-item span { display: block; color: var(--text-gray); font-size: 12px; font-weight: normal; margin-top: 4px; }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid #374151;
+            border-left: 5px solid var(--primary-gold);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .service-card h2 {
+            color: var(--primary-gold);
+            margin-top: 0;
+            font-size: 18px;
+            border-bottom: 1px dashed #374151;
+            padding-bottom: 8px;
+        }
+        .service-card p.sub-desc {
+            font-size: 13px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+        }
+        .dp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        @media (max-width: 600px) {
+            .dp-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .dp-box {
+            background: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+        .dp-placeholder {
+            width: 100%;
+            height: 120px;
+            background: #374151;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-weight: bold;
+            margin-bottom: 8px;
+            border: 1px dashed var(--primary-gold);
+            font-size: 13px;
+        }
+        .dp-box p {
+            margin: 0;
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+        .inquiry-card {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-gold);
+            border-radius: 8px;
+            padding: 25px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .inquiry-card h2 {
+            color: var(--primary-gold);
+            text-align: center;
+            margin-top: 0;
+        }
+        .inquiry-card input, .inquiry-card select, .inquiry-card textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border-radius: 5px;
+            border: 1px solid #374151;
+            background: #1f2937;
+            color: #fff;
+        }
+        .inquiry-card button {
+            width: 100%;
+            background: var(--whatsapp-green);
+            color: #fff;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+            background: #030712;
+            border-top: 3px solid var(--primary-gold);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        footer span {
+            color: var(--primary-gold);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="profile-title">
+            <h1>Janta Interior World / Janta Engineer World</h1>
+            <p>प्रोपराइटर: जावेद शरीफ | रजबपुर, अमरोहा (उत्तर प्रदेश)</p>
+            <p style="color: var(--primary-gold); font-size: 13px;">Official Website: jantainteriors.info</p>
+        </div>
+    </header>
+
+    <div class="contact-bar">
+        <a href="tel:+917500821786" class="btn-call">📞 कॉल करें: +91 7500821786</a>
+        <a href="https://wa.me/917500821786?text=नमस्ते%20जावेद%20भाई,%20मुझे%20काम%20के%20बारे%20में%20बात%20करनी%20है।" target="_blank" class="btn-wa">💬 WhatsApp चैट</a>
+    </div>
+
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar-list">
+            <h3>हमारी सेवाएं (Services)</h3>
+            <ul>
+                <li><a href="#s1">1. एल्युमिनियम डोर व विंडो</a></li>
+                <li><a href="#s2">2. एल्युमिनियम पार्टीशन व केबिन</a></li>
+                <li><a href="#s3">3. एल्युमिनियम ग्लास स्ट्रक्चर</a></li>
+                <li><a href="#s4">4. ACP शीट और ग्लेज़िंग</a></li>
+                <li><a href="#s5">5. टफन ग्लास व पैच फिटिंग</a></li>
+                <li><a href="#s6">6. टफन ग्लास पार्टीशन</a></li>
+                <li><a href="#s7">7. जिप्सम बोर्ड पार्टीशन</a></li>
+                <li><a href="#s8">8. जिप्सम सीलिंग</a></li>
+                <li><a href="#s9">9. जिप्सम फॉल्स सीलिंग</a></li>
+                <li><a href="#s10">10. PVC पैनल व PVC सीलिंग</a></li>
+                <li><a href="#s11">11. WPC डोर (वाटरप्रूफ)</a></li>
+                <li><a href="#s12">12. WPC विंडो</a></li>
+                <li><a href="#s13">13. टफन ग्लास रेलिंग</a></li>
+                <li><a href="#s14">14. मॉडर्न मॉड्यूलर किचन</a></li>
+                <li><a href="#s15">15. वुडन वर्क व अलमारी</a></li>
+                <li><a href="#s16">16. SS स्टील रेलिंग</a></li>
+                <li><a href="#s17">17. SS स्टील गेट</a></li>
+                <li><a href="#s18">18. MS लोहे के VIP गेट</a></li>
+                <li><a href="#s19">19. जनरेटर पावर व बैकअप</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-area">
+            <div class="features-banner">
+                <div class="feature-item">✓ उच्च गुणवत्ता<span>ओरिजिनल व टिकाऊ मटीरियल</span></div>
+                <div class="feature-item">✓ सही व किफायती दाम<span>बाजार से बेहतर रेट</span></div>
+                <div class="feature-item">✓ अनुभवी कारीगर<span>साफ-सुथरी फिनिशिंग</span></div>
+                <div class="feature-item">✓ फ्री साइट विजिट<span>अमरोहा व आसपास के क्षेत्र में</span></div>
+            </div>
+
+            <!-- Service 1 -->
+            <div id="s1" class="service-card">
+                <h2>1. Aluminium Door & Window (एल्युमिनियम दरवाज़ा व खिड़की)</h2>
+                <p class="sub-desc">घर और ऑफिस के लिए प्रीमियम स्लाइडिंग डोर, कास्मेंट विंडो और साउंडप्रूफ फ्रेमिंग कार्य।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>मॉडर्न स्लाइडिंग डोर</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>ब्लैक पाउडर कोटेड विंडो</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>कंप्लीट साइट फिटिंग</p></div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div id="s2" class="service-card">
+                <h2>2. Aluminium Partition & Cabin (पार्टीशन व ऑफिस केबिन)</h2>
+                <p class="sub-desc">दुकान, क्लिनिक और कॉर्पोरेट ऑफिस के लिए मजबूत और आकर्षक एल्युमिनियम केबिन विभाजन।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>ऑफिस ग्लास पार्टीशन</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>मैनेजर केबिन सेटअप</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>कमर्शियल पार्टीशन वर्क</p></div>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div id="s3" class="service-card">
+                <h2>3. Aluminium Glass Structure (एल्युमिनियम ग्लास स्ट्रक्चर)</h2>
+                <p class="sub-desc">दुकानों और बिल्डिंग के फ्रंट एलिवेशन के लिए मॉडर्न ग्लास आर्किटेक्चर वर्क।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>बिल्डिंग फ्रंट एलिवेशन</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>ग्लास फसाड वर्क</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>स्ट्रक्चरल फ्रेमिंग</p></div>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div id="s4" class="service-card">
+                <h2>4. Aluminium ACP Sheet & Glazing (ACP शीट व ग्लेज़िंग वर्क)</h2>
+                <p class="sub-desc">दुकानों, शोरूम और शोरूम बोर्ड के लिए वेदरप्रूफ और लक्ज़री ACP शीट क्लैडिंग कार्य।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>शोरूम फ्रंट ACP शीट</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>वूडेन फिनिश वॉल क्लैडिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>एक्सटीरियर ग्लेज़िंग</p></div>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div id="s5" class="service-card">
+                <h2>5. Toughened Glass & Patch Fitting (टफन ग्लास व पैच फिटिंग)</h2>
+                <p class="sub-desc">बिना फ्रेम वाले 10mm/12mm टफन ग्लास डोर, शोरूम एंट्रेंस और हाई-ग्रेड पैच फिटिंग वर्क।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>फ्रेमलेस मेन ग्लास डोर</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>शॉप डिस्प्ले ग्लास</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>हैवी फ्लोर स्प्रिंग फिटिंग</p></div>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div id="s6" class="service-card">
+                <h2>6. Toughened Glass Partition (टफन ग्लास पार्टीशन)</h2>
+                <p class="sub-desc">मीटिंग रूम, हॉल और केबिन के लिए साउंडप्रूफ प्रीमियम टफन ग्लास दीवारें।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>कॉन्फ्रेंस रूम पार्टीशन</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>फ्रॉस्टेड फिल्म ग्लास वर्क</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>केबिन ग्लास डिवाइडर</p></div>
+                </div>
+            </div>
+
+            <!-- Service 7 -->
+            <div id="s7" class="service-card">
+                <h2>7. Gypsum Board Partition (जिप्सम बोर्ड पार्टीशन)</h2>
+                <p class="sub-desc">कमरे को दो हिस्सों में बांटने के लिए हल्की, मजबूत, साउंडप्रूफ और स्मूथ फिनिश दीवारें।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>ड्राईवॉल पार्टीशन</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>साउंड इंसुलेशन वर्क</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>पेंट फिनिश रेडी वॉल</p></div>
+                </div>
+            </div>
+
+            <!-- Service 8 -->
+            <div id="s8" class="service-card">
+                <h2>8. Gypsum Ceiling (जिप्सम सीलिंग)</h2>
+                <p class="sub-desc">हॉल, शोरूम और कमरों की छत के लिए प्लेन और क्लीन जिप्सम सीलिंग समाधान।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>हॉल सिंपल सीलिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>ऑफिस ग्रिड सीलिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>स्मूथ प्लास्टर फिनिश</p></div>
+                </div>
+            </div>
+
+            <!-- Service 9 -->
+            <div id="s9" class="service-card">
+                <h2>9. Gypsum False Ceiling (डिजाइनर जिप्सम फॉल्स सीलिंग)</h2>
+                <p class="sub-desc">कोव लाइटिंग, प्रोफाइल लाइट और मॉडर्न ज्योमेट्रिक कट्स वाली लक्ज़री फॉल्स सीलिंग।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>लिविंग रूम LED सीलिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>बेडरूम डिजाइनर सीलिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>राउंड व कर्व्ड फॉल्स सीलिंग</p></div>
+                </div>
+            </div>
+
+            <!-- Service 10 -->
+            <div id="s10" class="service-card">
+                <h2>10. PVC Panel & PVC Ceiling (पीवीसी पैनल और सीलिंग)</h2>
+                <p class="sub-desc">100% वॉटरप्रूफ और सीलन से पूरी तरह सुरक्षित दीवार पैनल और सीलिंग डिजाइन।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>सीलन-प्रूफ वॉल पैनल्स</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>वूडेन लुक PVC सीलिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>ड्राइंग रूम बैकवॉल वर्क</p></div>
+                </div>
+            </div>
+
+            <!-- Service 11 -->
+            <div id="s11" class="service-card">
+                <h2>11. WPC Door (वाटरप्रूफ WPC दरवाज़े)</h2>
+                <p class="sub-desc">दीमक, पानी और धूप से कभी खराब न होने वाले मजबूत और सुंदर सॉलिड WPC दरवाजे।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>वाटरप्रूफ बाथरूम डोर</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>बेडरूम डिजाइनर WPC डोर</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>हाई-ग्लॉस फिनिश डोर</p></div>
+                </div>
+            </div>
+
+            <!-- Service 12 -->
+            <div id="s12" class="service-card">
+                <h2>12. WPC Window (WPC खिड़कियाँ)</h2>
+                <p class="sub-desc">दीमक-मुक्त, कभी न सड़ने-गलने वाले आधुनिक व टिकाऊ विंडो फ्रेम व ग्लास शटर।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>मजबूत आउटर विंडो फ्रेम</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>वूडेन टेक्सचर WPC विंडो</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>मौसम-रोधी खिड़की फिटिंग</p></div>
+                </div>
+            </div>
+
+            <!-- Service 13 -->
+            <div id="s13" class="service-card">
+                <h2>13. Glass Railing (प्रीमियम टफन ग्लास रेलिंग)</h2>
+                <p class="sub-desc">बालकनी और सीढ़ियों के लिए SS ब्रैकेट व बेस चैनल आधारित सेफ्टी ग्लास रेलिंग।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>बालकनी टफन ग्लास रेलिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>सीढ़ी ग्लास रेलिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>छत की फ्रेमलेस रेलिंग</p></div>
+                </div>
+            </div>
+
+            <!-- Service 14 -->
+            <div id="s14" class="service-card">
+                <h2>14. Modular Kitchen (मॉडर्न मॉड्यूलर किचन)</h2>
+                <p class="sub-desc">हाइड्रोलिक बास्केट, एक्रेलिक फिनिश, चिमनी स्पेस और वाटरप्रूफ बॉक्सेस के साथ शानदार किचन।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>L-शेप मॉड्यूलर किचन</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>सॉफ्ट-क्लोज ड्रॉअर सेटअप</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>एक्रेलिक व लैमिनेट किचन</p></div>
+                </div>
+            </div>
+
+            <!-- Service 15 -->
+            <div id="s15" class="service-card">
+                <h2>15. Wooden Work & Wardrobes (लकड़ी और प्लाईवुड का काम)</h2>
+                <p class="sub-desc">कस्टम अलमारी, स्लाइडिंग वॉर्डरोब, LED टीवी पैनल और बेड आदि का बेहतरीन काम।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>स्लाइडिंग वॉर्डरोब / अलमारी</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>लिविंग रूम LED टीवी यूनिट</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>स्टोरेज व केबिनेट वर्क</p></div>
+                </div>
+            </div>
+
+            <!-- Service 16 -->
+            <div id="s16" class="service-card">
+                <h2>16. SS Steel Railing (स्टेनलेस स्टील रेलिंग)</h2>
+                <p class="sub-desc">स्टेनलेस स्टील (ग्रेड 304) सीढ़ी और बालकनी रेलिंग, जो कभी जंग नहीं खाती और सालों-साल चमकती है।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>सीढ़ी SS 304 रेलिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>बालकनी पाइप रेलिंग</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>प्रीमियम ग्लास+SS कॉम्बो</p></div>
+                </div>
+            </div>
+
+            <!-- Service 17 -->
+            <div id="s17" class="service-card">
+                <h2>17. SS Steel Main Gate (स्टेनलेस स्टील मुख्य गेट)</h2>
+                <p class="sub-desc">बंगले, कोठी और मकानों के लिए आधुनिक, मजबूत और लाइफटाइम जंग-मुक्त SS स्टील गेट।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>लक्ज़री मेन SS गेट</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>लेजर कटिंग SS डिजाइन</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>स्लाइडिंग SS गेट</p></div>
+                </div>
+            </div>
+
+            <!-- Service 18 -->
+            <div id="s18" class="service-card">
+                <h2>18. MS Iron VIP Gate (लोहे के डिजाइनर वीआईपी गेट)</h2>
+                <p class="sub-desc">हैवी क्वालिटी लोहे के मुख्य द्वार, CNC जाली कटिंग डिजाइन और मजबूत सुरक्षा गेट।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>CNC लेजर कट VIP गेट</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>रॉयल आयरन गेट</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>हैवी ड्यूटी बाउंड्री गेट</p></div>
+                </div>
+            </div>
+
+            <!-- Service 19 -->
+            <div id="s19" class="service-card">
+                <h2>19. Generator Power & Backup (जनरेटर पावर व बैकअप)</h2>
+                <p class="sub-desc">शादी-विवाह, इंडस्ट्रियल साइट और कमर्शियल बिल्डिंग के लिए साइलेंट जनरेटर व पावर बैकअप।</p>
+                <div class="dp-grid">
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 1</div><p>साइलेंट जनरेटर सेटअप</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 2</div><p>कमर्शियल पावर बैकअप</p></div>
+                    <div class="dp-box"><div class="dp-placeholder">फोटो 3</div><p>ऑन-साइट सर्विस</p></div>
+                </div>
+            </div>
+
+            <!-- Inquiry Form -->
+            <div class="inquiry-card">
+                <h2>काम के लिए संपर्क करें (Inquiry Form)</h2>
+                <p style="text-align: center; color: var(--text-gray); font-size: 13px;">अपनी डिटेल भरें, हम आपसे तुरंत WhatsApp पर संपर्क करेंगे।</p>
+                <input type="text" id="cust_name" placeholder="आपका नाम">
+                <input type="tel" id="cust_phone" placeholder="आपका मोबाइल नंबर">
+                <select id="cust_service">
+                    <option value="">सेवा चुनें...</option>
+                    <option value="एल्युमिनियम डोर व विंडो">एल्युमिनियम डोर व विंडो</option>
+                    <option value="पार्टीशन व केबिन">पार्टीशन व केबिन</option>
+                    <option value="ACP शीट व ग्लेज़िंग">ACP शीट व ग्लेज़िंग</option>
+                    <option value="टफन ग्लास व रेलिंग">टफन ग्लास व रेलिंग</option>
+                    <option value="जिप्सम फॉल्स सीलिंग">जिप्सम फॉल्स सीलिंग</option>
+                    <option value="PVC पैनल व सीलिंग">PVC पैनल व सीलिंग</option>
+                    <option value="मॉड्यूलर किचन व वुडन वर्क">मॉड्यूलर किचन व वुडन वर्क</option>
+                    <option value="SS व MS गेट / रेलिंग">SS व MS गेट / रेलिंग</option>
+                </select>
+                <textarea id="cust_msg" rows="3" placeholder="काम का विवरण (जैसे: 12x10 कमरे की फॉल्स सीलिंग करवानी है)"></textarea>
+                <button type="button" onclick="sendToWhatsApp()">📲 WhatsApp पर भेजें</button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 <span>Janta Interior World & Janta Engineer World</span>. All Rights Reserved.</p>
+        <p>प्रोपराइटर: जावेद शरीफ | रजबपुर, अमरोहा (उत्तर प्रदेश) | संपर्क: +91 7500821786</p>
+    </footer>
+
+    <script>
+        function sendToWhatsApp() {
+            var name = document.getElementById('cust_name').value;
+            var phone = document.getElementById('cust_phone').value;
+            var service = document.getElementById('cust_service').value;
+            जावेद भाई, यह वही आपका असली और पूरा कोड है! आपका यह कोड नीचे सर्विस 15 पर कट गया था, मैंने बाकी बची हुई 4 सर्विसेज (SS रेलिंग, SS गेट, MS गेट, जनरेटर), इन्क्वायरी फॉर्म और फुटर जोड़कर इसे पूरा बंद कर दिया है।
+
+### आपका पूरा कोड (यह पूरा कॉपी करें):
+
+```html
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janta Interior World & Janta Engineer World - jantainteriors.info</title>
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --dark-bg: #090d16;
+            --card-bg: #111827;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --whatsapp-green: #25d366;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #111827, #030712);
+            border-bottom: 3px solid var(--primary-gold);
+            padding: 25px 15px;
+            text-align: center;
+        }
+        .profile-title h1 {
+            color: var(--primary-gold);
+            margin: 5px 0;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .profile-title p {
+            color: var(--text-gray);
+            margin: 5px 0;
+            font-size: 15px;
+        }
+        .contact-bar {
+            background: #1f2937;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #374151;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .contact-bar a {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-call { color: var(--primary-gold); }
+        .btn-wa { color: var(--whatsapp-green); }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sidebar-list {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-gold);
+            border-radius: 8px;
+            padding: 15px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        .sidebar-list h3 {
+            color: var(--primary-gold);
+            margin-top: 0;
+            border-bottom: 1px solid #374151;
+            padding-bottom: 10px;
+            font-size: 18px;
+        }
+        .sidebar-list ul {
+            padding-left: 15px;
+            margin: 0;
+            list-style-type: none;
+        }
+        .sidebar-list li {
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        .sidebar-list a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .sidebar-list a:hover {
+            color: var(--primary-gold);
+        }
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .features-banner {
+            background: var(--card-bg);
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            text-align: center;
+        }
+        .feature-item { color: var(--primary-gold); font-size: 14px; font-weight: bold; }
+        .feature-item span { display: block; color: var(--text-gray); font-size: 12px; font-weight: normal; margin-top: 4px; }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid #374151;
+            border-left: 5px solid var(--primary-gold);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .service-card h2 {
+            color: var(--primary-gold);
+            margin-top: 0;
+            font-size: 18px;
+            border-bottom: 1px dashed #374151;
+            padding-bottom: 8px;
+        }
+        .service-card p.sub-desc {
+            font-size: 13px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+        }
+        .dp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        @media (max-width: 600px) {
+            .dp-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .dp-box {
+            background: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+        .dp-placeholder {
+            width: 100%;
+            height: 120px;
+            background: #374151;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-weight: bold;
+            margin-bottom: 8px;
+            border: 1px dashed var(--primary-gold);
+            font-size: 13px;
+        }
+        .dp-box p {
+            margin: 0;
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+        .inquiry-card {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-gold);
+            border-radius: 8px;
+            padding: 25px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .inquiry-card h2 {
+            color: var(--primary-gold);
+            text-align: center;
+            margin-top: 0;
+        }
+        .inquiry-card input, .inquiry-card select, .inquiry-card textarea {
+            width: 100%;
+            padding: 1
